@@ -10,11 +10,15 @@ pub struct JiraDatabase {
 
 impl JiraDatabase {
     pub fn new(file_path: String) -> Self {
-        todo!()
+        Self {
+            database: Box::new(JSONFileDatabase {
+                file_path
+            })
+        }
     }
 
     pub fn read_db(&self) -> Result<DBState> {
-        todo!()
+        self.database.read_db()
     }
     
     pub fn create_epic(&self, epic: Epic) -> Result<u32> {
